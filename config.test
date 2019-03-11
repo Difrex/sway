@@ -1,0 +1,338 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Merge Xresources
+exec xrdb /home/difrex/.Xresources
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Ubuntu Mono 11
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+# use GNU Emacs eshell as an terminal emulator
+bindsym $mod+Shift+Return exec emacsclient -c -e "(eshell 'N)"
+
+# Start emacsclient
+bindsym $mod+a exec emacsclient -c
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
+
+# rofi-pass
+bindsym $mod+p exec ~/.local/bin/pm -R
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+# bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+### WORKSPACES ###
+set $firstMonitor DVI-D-0
+set $secondMonitor DVI-I-0
+
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+# bindsym $mod+Shift+0 move container to workspace 10
+
+### CUSTOM APP SETTINGS ###
+assign [class="TelegramDesktop"] $workspace4
+assign [class="Firefox"] $workspace1
+assign [class="Chromium"] $workspace1
+assign [class="Evolution"] $workspace5
+assign [class="sakura"] $workspace2
+#assign [class="Spotify"] $workspace4
+# assign [class="Ghb"] $workspace5
+# assign [class="discord"] $workspace6
+# assign [class="Anki"] $workspace5
+# assign [class="jetbrains-idea"] $workspace3
+# assign [class="Pale moon"] $workspace1
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Lock screen
+bindsym $mod+l exec /usr/bin/xlock
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# MPD
+bindsym XF86AudioPlay exec mpc toggle && pkill --signal RTMIN+2 i3blocks
+bindsym XF86AudioPause exec mpc toggle && pkill --signal RTMIN+2 i3blocks
+bindsym XF86AudioNext exec mpc next && pkill --signal RTMIN+2 i3blocks
+bindsym XF86AudioPrev exec mpc prev && pkill --signal RTMIN+2 i3blocks
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+bindsym $mod+Shift+h mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id xlock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# New window size
+new_window pixel 2
+new_float none
+new_float pixel 2
+
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+smart_gaps on
+smart_borders on
+gaps inner 10
+gaps outer 8
+hide_edge_borders both
+
+# Wallpapers
+# sway only
+# output "*" background /usr/share/backgrounds/gnome/Road.jpg fill
+
+# Multi monitor
+set $mode_display Ext Screen (d) FullHD ON, (h) HDMI ON, (b) HIDPI
+mode "$mode_display" {
+     bindsym d exec --no-startup-id xrandr --output eDP1 --mode 1920x1200, mode "default"
+     bindsym h exec --no-startup-id xrandr --output eDP1 --mode 1920x1200 --output HDMI2 --auto --same-as eDP1, mode "default"
+     bindsym b exec --no-startup-id xrandr --output eDP1 --mode 2560x1600 --output HDMI2 --auto --same-as eDP1, mode "default"
+
+     # back to normal: Enter or Escape
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
+
+
+exec compton --config /home/difrex/.config/compton.conf &
+exec dunst -config /home/difrex/.config/dunst/dunstrc &
+
+# Apply theme and change background
+exec wal -i ~/Изображения/wallpapers/collection/Vibrant -s -e
+
+exec nm-applet &
+
+# Locker
+exec_always xautolock -time 2 -locker /usr/bin/xlock
+exec ~/.config/i3/set_resolution.sh &
+
+# MATTERMOST
+for_window [instance="mattermost-desktop|mattermost"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
+exec --no-startup-id exec /home/difrex/soft/mattermost-desktop-3.7.1-linux-x64/mattermost-desktop-3.7.1/mattermost-desktop
+bindsym $mod+Shift+m [instance="mattermost-desktop|mattermost"] scratchpad show
+
+# MS Teams
+for_window [instance="teams-for-linux.*"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
+exec --no-startup-id exec teams-for-linux
+bindsym $mod+Shift+z [instance="teams-for-linux.*"] scratchpad show
+
+# Emacs
+for_window [instance="jabberchat"] floating enable, move absolute position 865 512, move scratchpad
+# exec --no-startup-id emacsclient -c -e '(setq frame-title-format "jabberchat")'
+exec --no-startup-id i3-msg 'workspace 3:; exec emacsclient -c'
+bindsym $mod+Shift+n [instance="emacs.*"] scratchpad show
+
+# Launch lollypop in scratchpad
+bindsym $mod+Shift+l [instance="lollypop*"] scratchpad show
+for_window [instance="lollypop"] floating enable, move absolute position 180 150, resize set 1556 950, move scratchpad
+exec --no-startup-id lollypop
+
+# Skype
+for_window [instance="skype.*|Skype.*"] floating enable, move absolute position 100 120, resize set 1556 950, move scratchpad
+bindsym $mod+Shift+s [instance="skype.*|Skype.*"] scratchpad show
+
+# Firefox
+for_window [instance="firefox"] move container to $workspace1
+exec --no-startup-id firefox
+
+exec --no-startup-id i3-msg 'workspace 2:; exec gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 5:; exec evolution'
+
+# Enable floating for Nautilus
+for_window [instance="nautilus"] floating enable, move absolute position 140 250, resize set 1256 650
+
+# Enable floating for calendar
+for_window [class="Yad"] floating enable
+
+# Enable floating for telegram
+for_window [class="Telegram"] floating enable, move absolute position 1325 138, resize set 522 965, move scratchpad
+bindsym $mod+Shift+t [class="Telegram"] scratchpad show
+
+# Set random wallpaper
+bindsym $mod+Shift+w exec wal -i ~/Изображения/wallpapers/collection/Vibrant -s -e 
+
+### COLORS ###
+# Solarized dark
+client.focused          #002b36 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #002b36 #073642 #839496 #073642
+client.unfocused        #002b36 #073642 #839496 #073642
+client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+
+
+# Solarized dark
+# client.focused          #002b36 #586e75 #fdf6e3 #268bd2
+# client.focused_inactive #002b36 #073642 #839496 #073642
+# client.unfocused        #002b36 #073642 #839496 #073642
+# client.urgent #002b36 #dc322f #fdf6e3 #002b36
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
+bar {
+    status_command i3blocks -c ~/.config/i3blocks.conf
+    position top
+    colors {
+           # Solarized dark
+           background #002b36
+           statusline #839496
+           separator  #586e75
+           focused_workspace  #b58900 #b58900 #002b36
+           active_workspace   #586e75 #586e75 #002b36
+           inactive_workspace #073642 #002b36 #839496
+           urgent_workspace #dc322f #dc322f #fdf6e3
+
+           # Solarized dark
+           # background #002b36
+           # statusline #839496
+           # separator  #586e75
+           # focused_workspace  #b58900 #b58900 #002b36
+           # active_workspace   #586e75 #586e75 #002b36
+           # inactive_workspace #073642 #002b36 #839496
+           # urgent_workspace #dc322f #dc322f #fdf6e3
+    }
+}

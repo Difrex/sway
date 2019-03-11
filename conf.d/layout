@@ -1,0 +1,15 @@
+input '1452:627:Apple_Inc._Apple_Internal_Keyboard_/_Trackpad' {
+    xkb_layout us,ru
+    xkb_options grp:win_space_toggle
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    pointer_accel 0.35
+}
+
+input '1118:1974:Microsoft_Comfort_Curve_Keyboard_3000' {
+    xkb_layout us,ru
+    xkb_options grp:win_space_toggle,ctrl:nocaps,grp_led:scroll
+}
+
