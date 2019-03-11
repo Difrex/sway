@@ -101,7 +101,7 @@ bindsym $mod+Control+z focus mode_toggle
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Lock screen
-bindsym $mod+l exec swaylock -i ~/Изображения/wallpapers/collection/Future/1430601766509-4.jpg
+bindsym $mod+l exec ~/.config/sway/lock.sh
 
 # focus the parent container
 # bindsym $mod+a focus parent
@@ -165,6 +165,7 @@ bindsym $mod+Ctrl+l move workspace to output left
 #       |_|   |_|                               |___/
 assign [class="TelegramDesktop"] $workspace4
 assign [class="Firefox"] $workspace1
+assign [class="Epiphany"] $workspace1
 assign [class="Brave"] $workspace1
 # assign [class="Chromium"] $workspace1
 assign [class="Evolution"] $workspace5
@@ -254,10 +255,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # smart_gaps on
-smart_borders on
+# smart_borders on
 gaps inner 15
 gaps outer 10
-# hide_edge_borders smart
+hide_edge_borders smart
 
 # Wallpapers
 # sway only
@@ -290,11 +291,11 @@ bindsym $mod+x mode "$mode_display"
 #  / _` | | | | __/ _ \/ __| __/ _` | '__| __|
 # | (_| | |_| | || (_) \__ \ || (_| | |  | |_
 #  \__,_|\__,_|\__\___/|___/\__\__,_|_|   \__|
-exec_always compton
-exec dunst -config /home/difrex/.config/dunst/dunstrc &
+# exec_always compton
+exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000
 
 # Apply theme and change background
-exec wal -i ~/Изображения/wallpapers/collection/Future -s -e
+exec ~/.config/sway/set_wallpaper.py
 # exec_always --no-startup-id "xwinwrap -ov -ni -fs -- mpv -wid WID --keepaspect=no --loop /home/difrex/Изображения/wallpapers/wl6.gif"
 
 exec nm-applet &
@@ -325,8 +326,12 @@ for_window [instance="skype.*|Skype.*"] floating enable, move absolute position 
 bindsym $mod+Shift+s [instance="skype.*|Skype.*"] scratchpad show
 
 # Firefox
-for_window [instance="firefox"] move container to $workspace1
-exec --no-startup-id firefox
+# for_window [instance="firefox"] move container to $workspace1
+# exec --no-startup-id firefox
+
+# Epiphany
+for_window [class="Epiphany"] move container to $workspace1
+exec --no-startup-id epiphany
 
 exec --no-startup-id i3-msg 'workspace 2:; exec gnome-terminal'
 # exec --no-startup-id i3-msg 'workspace 5:; exec evolution'
@@ -342,7 +347,7 @@ for_window [class="Telegram"] floating enable, move absolute position 1325 138, 
 bindsym $mod+Shift+t [class="Telegram"] scratchpad show
 
 # Set random wallpaper
-bindsym $mod+Shift+w exec wal -i ~/Изображения/wallpapers/collection/Future -s -e
+bindsym $mod+Shift+w exec ~/.config/sway/set_wallpaper.py
 
 #            _
 #           | |
@@ -351,10 +356,10 @@ bindsym $mod+Shift+w exec wal -i ~/Изображения/wallpapers/collection/
 # | (_| (_) | | (_) | |  \__ \
 #  \___\___/|_|\___/|_|  |___/
 # Solarized dark
-client.focused          #002b36 #6c71c4 #fdf6e3 #268bd2
-client.focused_inactive #002b36 #073642 #839496 #073642
-client.unfocused        #002b36 #073642 #839496 #073642
-client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+client.focused          #002b36 #6c71c4 #fdf6e3 #268bd2 #6c71c4
+client.focused_inactive #002b36 #073642 #839496 #073642 #073642
+client.unfocused        #002b36 #073642 #839496 #073642 #073642
+client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
 
 # Solarized light
 # client.focused         	#d33682	#d33682	#002b36 #d33682 #d33682
