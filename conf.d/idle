@@ -1,1 +1,1 @@
-exec_always swayidle -w timeout 120 '/home/difrex/.config/sway/lock.sh' before-sleep '/home/difrex/.config/sway/lock.sh'
+exec_always swayidle -w timeout 120 '/home/difrex/.config/sway/scripts/lock.sh' before-sleep '/home/difrex/.config/sway/scripts/lock.sh'

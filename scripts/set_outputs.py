@@ -74,7 +74,7 @@ def autoswich(outputs):
 
 
 def write_templ(templ):
-    with open("/home/difrex/.config/sway/conf.d/monitors", "w") as f:
+    with open(os.environ.get("HOME", "~/") + "/.config/sway/conf.d/monitors", "w") as f:
         f.write(templ.strip("\n"))
 
 

@@ -42,8 +42,9 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+p exec ~/.local/bin/pm -R
 
 # Reload theme
-bindsym $mod+Shift+Control+l exec /home/difrex/.config/i3/theme_set.py light
-bindsym $mod+Shift+Control+d exec /home/difrex/.config/i3/theme_set.py dark
+# Needs rewrite for the Sway
+# bindsym $mod+Shift+Control+l exec /home/difrex/.config/i3/theme_set.py light
+# bindsym $mod+Shift+Control+d exec /home/difrex/.config/i3/theme_set.py dark
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -95,7 +96,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+Control+z focus mode_toggle
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Lock screen
 bindsym $mod+l exec ~/.config/sway/lock.sh
@@ -114,9 +115,6 @@ bindsym $mod+l exec ~/.config/sway/lock.sh
 #   \_/\_/ \___/|_|  |_|\_\___/ .__/ \__,_|\___\___||___/
 #                             | |
 #                             |_|
-
-set $firstMonitor DVI-D-0
-set $secondMonitor DVI-I-0
 
 set $workspace1 "1:"
 set $workspace2 "2:"
@@ -214,30 +212,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Keyboard brightness
-bindsym XF86KbdBrightnessUp exec ~/.config/i3/set_kb_light.py --up
-bindsym XF86KbdBrightnessDown exec ~/.config/i3/set_kb_light.py --down
-
-# Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
-# Calculator key
-# bindsym XF86Calculator exec mpc next && pkill --signal RTMIN+2 i3blocks
-
-bindsym $mod+Shift+h mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id betterlockscreen -l, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym XF86KbdBrightnessUp exec ~/.config/sway/scripts/set_kb_light.py --up
+bindsym XF86KbdBrightnessDown exec ~/.config/sway/scripts/set_kb_light.py --down
 
 # New window size
 new_window pixel 2
@@ -258,8 +234,10 @@ gaps outer 10
 hide_edge_borders smart
 
 # Wallpapers
-# sway only
 output "*" background ~/Изображения/wallpapers/collection/Future/1430601766509-4.jpg fill
+
+# Set random wallpaper
+bindsym $mod+Shift+w exec ~/.config/sway/set_wallpaper.py
 
 #                        _ _
 #                       (_) |
@@ -267,14 +245,16 @@ output "*" background ~/Изображения/wallpapers/collection/Future/1430
 # | '_ ` _ \ / _ \| '_ \| | __/ _ \| '__/ __|
 # | | | | | | (_) | | | | | || (_) | |  \__ \
 # |_| |_| |_|\___/|_| |_|_|\__\___/|_|  |___/
+
+# Autodetect monitors
 exec --no-startup-id ~/.config/sway/set_outputs.py
 set $mode_display (1) Single, (2) Two, (3) Three, (h) HiDPI, (d) disable HiDPI
 mode "$mode_display" {
-    bindsym 1 exec --no-startup-id ~/.config/sway/set_outputs.py 1, mode "default"
-    bindsym 2 exec --no-startup-id ~/.config/sway/set_outputs.py 2, mode "default"
-    bindsym 3 exec --no-startup-id ~/.config/sway/set_outputs.py 3, mode "default"
-    bindsym h exec --no-startup-id ~/.config/sway/set_outputs.py h, mode "default"
-    bindsym d exec --no-startup-id ~/.config/sway/set_outputs.py d, mode "default"
+    bindsym 1 exec --no-startup-id ~/.config/sway/scripts/set_outputs.py 1, mode "default"
+    bindsym 2 exec --no-startup-id ~/.config/sway/scripts/set_outputs.py 2, mode "default"
+    bindsym 3 exec --no-startup-id ~/.config/sway/scripts/set_outputs.py 3, mode "default"
+    bindsym h exec --no-startup-id ~/.config/sway/scripts/set_outputs.py h, mode "default"
+    bindsym d exec --no-startup-id ~/.config/sway/scripts/set_outputs.py d, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -310,15 +290,12 @@ exec --no-startup-id exec chromium --app=https://teams.microsoft.com/
 bindsym $mod+Shift+z [class="Chromium" title="Microsoft Teams"] scratchpad show
 
 # Emacs
-for_window [instance="jabberchat"] floating enable, move absolute position 865 512, move scratchpad
-# exec --no-startup-id emacsclient -c -e '(setq frame-title-format "jabberchat")'
 exec --no-startup-id i3-msg 'workspace 3:; exec emacsclient -c'
 bindsym $mod+Shift+n [instance="emacs.*"] scratchpad show
 
 # Launch lollypop in scratchpad
 bindsym $mod+Shift+l [instance="lollypop*"] scratchpad show
 for_window [instance="lollypop"] floating enable, move absolute position 180 150, resize set 1556 950, move scratchpad
-# exec --no-startup-id lollypop
 
 # Skype
 for_window [instance="skype.*|Skype.*"] floating enable, move absolute position 100 120, resize set 1556 950, move scratchpad
@@ -333,20 +310,16 @@ for_window [class="Epiphany"] move container to $workspace1
 exec --no-startup-id epiphany
 
 exec --no-startup-id i3-msg 'workspace 2:; exec gnome-terminal'
-# exec --no-startup-id i3-msg 'workspace 5:; exec evolution'
 
 # Enable floating for Nautilus
 for_window [instance="nautilus"] floating enable, move absolute position 140 250, resize set 1256 650
 
 # Enable floating for calendar
-for_window [class="Yad"] floating enable
+# for_window [class="Yad"] floating enable
 
 # Enable floating for telegram
 for_window [class="Telegram"] floating enable, move absolute position 1325 138, resize set 522 965, move scratchpad
 bindsym $mod+Shift+t [class="Telegram"] scratchpad show
-
-# Set random wallpaper
-bindsym $mod+Shift+w exec ~/.config/sway/set_wallpaper.py
 
 #            _
 #           | |
