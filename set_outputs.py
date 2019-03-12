@@ -49,6 +49,14 @@ output DP-1 disable
 """
 
 
+def enable_hidpi():
+    return "output eDP-1 scale 1.4 enable"
+
+
+def disable_hidpi():
+    return "output eDP-1 scale 1.4 disable"
+
+
 def two_templ():
     return """output eDP-1 pos 1920 0 scale 1.4 enable
 output HDMI-A-2 pos 0 0 enable
@@ -59,8 +67,10 @@ output DP-1 disable
 def autoswich(outputs):
     if three_mons(outputs):
         write_templ(three_mons_templ())
+        swaymsg(three_mons_templ())
     else:
         write_templ(single_templ())
+        swaymsg(single_templ())
 
 
 def write_templ(templ):
@@ -83,5 +93,9 @@ if __name__ == "__main__":
         elif sys.argv[1] == "3":
             write_templ(three_mons_templ())
             swaymsg(three_mons_templ())
+        elif sys.argv[1] == "h":
+            swaymsg(enable_hidpi())
+        elif sys.argv[1] == "d":
+            swaymsg(disable_hidpi())
     else:
         autoswich(connected())
