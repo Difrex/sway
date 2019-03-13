@@ -1,0 +1,161 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    "modules-left": [
+        "sway/workspaces",
+        "custom/right-arrow-dark"
+    ],
+    "modules-center": [
+        "custom/left-arrow-dark",
+        "clock#1",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "clock#2",
+        "custom/right-arrow-dark",
+        "custom/right-arrow-light",
+        "clock#3",
+        "custom/right-arrow-dark"
+    ],
+    "modules-right": [
+        "custom/left-arrow-dark",
+        "pulseaudio",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "custom/mpd",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "custom/mail",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "battery",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "custom/pacman",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "custom/layout",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "tray"
+    ],
+
+    "custom/left-arrow-dark": {
+        "format": ""
+    },
+    "custom/left-arrow-light": {
+        "format": ""
+    },
+    "custom/right-arrow-dark": {
+        "format": ""
+    },
+    "custom/right-arrow-light": {
+        "format": ""
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}"
+    },
+    "clock#1": {
+        "format": "{:%a}"
+    },
+    "clock#2": {
+        "format": "{:%H:%M}"
+    },
+    "clock#3": {
+        "format": "{:%m-%d}"
+    },
+    "custom/volume": {
+        "format": "{icon}  {}",
+        "format-bluetooth": "{icon}  {} ",
+        "format-muted": "",
+        "format-icons": {
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "command": "/usr/lib/i3blocks/volume",
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "custom/mpd": {
+        "format": "{}",
+        "exec": "~/.config/sway/blocks/current_play.sh",
+        "interval": 1,
+        "on-click": "mpc prev",
+        "on-click-right": "mpc next",
+        "on-scroll-up": "mpc toggle",
+        "on-scroll-down": "mpc toggle",
+        "tooltip": false
+    },
+    "custom/mail": {
+        "format": "{icon}  {}",
+        "format-icons": {
+            "default": [
+                ""
+            ]
+        },
+        "exec": "~/.config/sway/blocks/mail.sh",
+        "interval": 30
+    },
+    "custom/pacman": {
+        "format": "{icon}  {}",
+        "format-icons": {
+            "default": [
+                ""
+            ]
+        },
+        "exec": "~/.config/sway/blocks/arch-update.py -b '#268bd2' -u '#d33682' -w '^linux.*' '^pacman.*'",
+        "interval": 360
+    },
+    "custom/layout": {
+        "format": "{icon} {}",
+        "format-icons": {
+            "default": [
+                ""
+            ]
+        },
+        "exec": "~/.config/sway/blocks/key_layout.py",
+        "interval": 1        
+    },
+    "pulseaudio": {
+        "format": "{icon}  {}",
+        "interval": 5,
+        "format-icons": {
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "Mem {}%"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage:2}%"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 5
+    },
+    "tray": {
+        "icon-size": 20
+    }
+}

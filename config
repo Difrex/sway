@@ -293,7 +293,7 @@ exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text
 exec ~/.config/sway/set_wallpaper.py
 # exec_always --no-startup-id "xwinwrap -ov -ni -fs -- mpv -wid WID --keepaspect=no --loop /home/difrex/Изображения/wallpapers/wl6.gif"
 
-exec nm-applet &
+exec_always nm-applet --indicator
 
 # MATTERMOST
 for_window [instance="mattermost-desktop|mattermost"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
@@ -356,8 +356,8 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
 # client.urgent		    #657b83	#002b36	#657b83	#268bd2 #268bd2
 
 bar {
-    # swaybar_command waybar
-    status_command i3blocks -c ~/.config/sway/i3blocks.conf
+    swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
+    # status_command i3blocks -c ~/.config/sway/i3blocks.conf
     position top
     colors {
            # Solarized dark
