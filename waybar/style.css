@@ -9,19 +9,23 @@ window#waybar {
 }
 
 #custom-right-arrow-dark, #custom-left-arrow-dark {
-    color: #1a1a1a;
+    color: #073642;
 }
 #custom-right-arrow-light, #custom-left-arrow-light {
-    color: #292b2e;
-    background: #1a1a1a;
+    color: #002b36;
+    background: #073642;
 }
 
 #workspaces, #clock.1, #clock.2, #clock.3, #pulseaudio, #backlight, #memory, #cpu, #temperature, #battery, #tray, #mpd, #mail {
-    background: #1a1a1a;
+    background: #073642;
+}
+
+#clock.2 {
+    font-weight: bold;
 }
 
 #custom-mpd, #custom-mail, #custom-pacman, #custom-layout {
-    background: #1a1a1a;
+    background: #073642;
     padding: 0 10px;
 }
 
@@ -62,7 +66,7 @@ window#waybar {
     color: #6c71c4;
 }
 #custom-mpd {
-    color: #6c71c4;
+    color: #d33682;
 }
 #battery {
     color: #859900;

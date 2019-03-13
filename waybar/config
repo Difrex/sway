@@ -20,24 +20,12 @@
     "modules-right": [
         "custom/left-arrow-dark",
         "pulseaudio",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
         "custom/mpd",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
         "custom/mail",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
         "battery",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
         "custom/pacman",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
-        "custom/layout",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
-        "tray"
+        "tray",
+        "custom/layout"
     ],
 
     "custom/left-arrow-dark": {
@@ -128,6 +116,7 @@
                 ""
             ]
         },
+        "tooltip": false,
         "scroll-step": 5,
         "on-click": "pavucontrol"
     },

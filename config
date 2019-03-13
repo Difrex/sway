@@ -318,12 +318,12 @@ for_window [instance="skype.*|Skype.*"] floating enable, move absolute position 
 bindsym $mod+Shift+s [instance="skype.*|Skype.*"] scratchpad show
 
 # Firefox
-# for_window [instance="firefox"] move container to $workspace1
-# exec --no-startup-id firefox
+for_window [instance="firefox"] move container to $workspace1
+exec --no-startup-id firefox
 
 # Epiphany
-for_window [class="Epiphany"] move container to $workspace1
-exec --no-startup-id epiphany
+# for_window [class="Epiphany"] move container to $workspace1
+# exec --no-startup-id epiphany
 
 exec --no-startup-id i3-msg 'workspace 2:; exec gnome-terminal'
 
