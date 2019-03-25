@@ -24,7 +24,7 @@ font pango:Source Code Pro 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
+bindsym $mod+Return exec ~/.local/bin/sway_spiral gnome-terminal --profile='Solarized Dark'
 # use GNU Emacs eshell as an terminal emulatory
 # bindsym $mod+Shift+Return exec emacsclient -c -e "(eshell 'N)"
 
