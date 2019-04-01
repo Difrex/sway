@@ -29,7 +29,7 @@ window#waybar {
     opacity: 1;
 }
 
-#custom-mpd, #custom-mail, #custom-pacman, #custom-layout {
+#custom-mpd, #custom-mail, #custom-pacman, #custom-layout, #custom-autolayout {
     background: #073642;
     padding: 0 10px;
     opacity: 1;
@@ -78,7 +78,7 @@ window#waybar {
     color: #b58900;
     opacity: 1;
 }
-#cpu {
+#cpu, #custom-autolayout {
     color: #6c71c4;
     opacity: 1;
 }

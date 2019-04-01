@@ -1,5 +1,5 @@
 # Internal keyboard
-input '1452:627:Apple_Inc._Apple_Internal_Keyboard_/_Trackpad' {
+input '*' {
     xkb_layout us,ru
     xkb_options grp:win_space_toggle,ctrl:nocaps,grp_led:scroll
 }
@@ -14,8 +14,7 @@ input "1452:627:bcm5974" {
 }
 
 # External keyboard
-input '1118:1974:Microsoft_Comfort_Curve_Keyboard_3000' {
-    xkb_layout us,ru
-    xkb_options grp:win_space_toggle,ctrl:nocaps,grp_led:scroll
-}
-
+# input '1118:1974:Microsoft_Comfort_Curve_Keyboard_3000' {
+#     xkb_layout us,ru
+#     xkb_options grp:win_space_toggle,ctrl:nocaps,grp_led:scroll
+# }

@@ -4,6 +4,7 @@
 
     "modules-left": [
         "sway/workspaces",
+        "custom/autolayout",
         "custom/right-arrow-dark"
     ],
     "modules-center": [
@@ -52,6 +53,11 @@
     },
     "clock#3": {
         "format": "{:%m-%d}"
+    },
+    "custom/autolayout": {
+        "format": "{}",
+        "exec": "~/.config/sway/scripts/auto_layout.py",
+        "interval": 1
     },
     "custom/volume": {
         "format": "{icon}  {}",
@@ -105,7 +111,7 @@
             ]
         },
         "exec": "~/.config/sway/blocks/key_layout.py",
-        "interval": 1        
+        "interval": 1
     },
     "pulseaudio": {
         "format": "{icon}  {}",

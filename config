@@ -24,7 +24,7 @@ font pango:Source Code Pro 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec ~/.local/bin/sway_spiral gnome-terminal --profile='Solarized Dark'
+bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
 # use GNU Emacs eshell as an terminal emulatory
 # bindsym $mod+Shift+Return exec emacsclient -c -e "(eshell 'N)"
 
@@ -150,6 +150,10 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Ctrl+r move workspace to output right
 bindsym $mod+Ctrl+l move workspace to output left
 
+# Autolayout settings
+bindsym $mod+Alt+s exec ~/.local/bin/swaymgr -s 'set spiral'
+bindsym $mod+Alt+m exec ~/.local/bin/swaymgr -s 'set manual'
+
 #                               _   _   _
 #                              | | | | (_)
 #   __ _ _ __  _ __    ___  ___| |_| |_ _ _ __   __ _ ___
@@ -208,8 +212,8 @@ bindsym XF86AudioNext exec mpc next && pkill --signal RTMIN+2 i3blocks
 bindsym XF86AudioPrev exec mpc prev && pkill --signal RTMIN+2 i3blocks
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Keyboard brightness
 bindsym XF86KbdBrightnessUp exec ~/.config/sway/scripts/set_kb_light.py --up
@@ -263,7 +267,7 @@ bindsym $mod+c mode "$mode_screenshot"
 # |_| |_| |_|\___/|_| |_|_|\__\___/|_|  |___/
 
 # Autodetect monitors
-exec --no-startup-id ~/.config/sway/set_outputs.py
+exec --no-startup-id ~/.config/sway/scripts/set_outputs.py
 set $mode_display (1) Single, (2) Two, (3) Three, (h) HiDPI, (d) disable HiDPI
 mode "$mode_display" {
     bindsym 1 exec --no-startup-id ~/.config/sway/scripts/set_outputs.py 1, mode "default"
@@ -290,7 +294,7 @@ bindsym $mod+x mode "$mode_display"
 exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000
 
 # Apply theme and change background
-exec ~/.config/sway/set_wallpaper.py
+exec ~/.config/sway/scripts/set_wallpaper.py
 # exec_always --no-startup-id "xwinwrap -ov -ni -fs -- mpv -wid WID --keepaspect=no --loop /home/difrex/Изображения/wallpapers/wl6.gif"
 
 exec_always nm-applet --indicator
