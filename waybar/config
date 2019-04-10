@@ -4,6 +4,7 @@
 
     "modules-left": [
         "sway/workspaces",
+        "sway/mode",
         "custom/autolayout",
         "custom/right-arrow-dark"
     ],

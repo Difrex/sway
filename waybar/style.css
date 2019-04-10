@@ -40,11 +40,21 @@ window#waybar {
     opacity: 1;
 }
 
+#mode {
+    background: #073642;
+    border-bottom: 3px solid #fdf6e3;
+}
+
 #workspaces button {
     padding: 0 2px;
     color: #fdf6e3;
     opacity: 1;
 }
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
 #workspaces button.focused {
     color: #268bd2;
     opacity: 1;
