@@ -22,7 +22,7 @@ while getopts ":f:W:H:" opt; do
 done
 
 case "$BLOCK_BUTTON" in
-    1|2|3) 
+    1|2|3)
 
 	    # the position of the upper left corner of the popup
 	    # posX=$(($BLOCK_X - $width / 2))
@@ -30,7 +30,7 @@ case "$BLOCK_BUTTON" in
         posX=1600
         posY=30
 
-	    i3-msg -q "exec yad --calendar \
+	    swaymsg -q "exec yad --calendar \
         --width=$width --height=$height \
 	    --undecorated --fixed \
 	    --close-on-unfocus --no-buttons \
