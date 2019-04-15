@@ -151,7 +151,7 @@ bindsym $mod+Ctrl+r move workspace to output right
 bindsym $mod+Ctrl+l move workspace to output left
 
 # Autolayout settings
-exec_always --no-startup-id ~/.local/bin/swaymgr
+exec --no-startup-id ~/.local/bin/swaymgr
 bindsym $mod+Alt+s exec ~/.config/sway/scripts/auto_layout.py 'spiral'
 bindsym $mod+Alt+l exec ~/.config/sway/scripts/auto_layout.py 'left'
 bindsym $mod+Alt+m exec ~/.config/sway/scripts/auto_layout.py 'manual'
@@ -203,9 +203,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/sway/scripts/volume.py +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/sway/scripts/volume.py -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id ~/.config/sway/scripts/volume.py mute # mute sound
 
 # MPD
 bindsym XF86AudioPlay exec mpc toggle && pkill --signal RTMIN+2 i3blocks
@@ -293,7 +293,7 @@ bindsym $mod+x mode "$mode_display"
 # | (_| | |_| | || (_) \__ \ || (_| | |  | |_
 #  \__,_|\__,_|\__\___/|___/\__\__,_|_|   \__|
 # exec_always compton
-exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1
+exec_always ~/.local/bin/mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
 
 # Apply theme and change background
 exec ~/.config/sway/scripts/set_wallpaper.py
