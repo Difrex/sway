@@ -368,20 +368,20 @@ client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
 # client.unfocused       	#657b83	#002b36	#657b83	#268bd2 #268bd2
 # client.urgent		    #657b83	#002b36	#657b83	#268bd2 #268bd2
 
-bar {
-    swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
-    # status_command i3blocks -c ~/.config/sway/i3blocks.conf
-    position top
-    colors {
-           # Solarized dark
-           background #002b36
-           statusline #839496
-           separator  #586e75
-           focused_workspace  #b58900 #b58900 #002b36
-           active_workspace   #586e75 #586e75 #002b36
-           inactive_workspace #073642 #002b36 #839496
-           urgent_workspace   #dc322f #dc322f #fdf6e3
-    }
-}
+# bar {
+#     # swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
+#     # status_command i3blocks -c ~/.config/sway/i3blocks.conf
+#     position top
+#     colors {
+#            # Solarized dark
+#            background #002b36
+#            statusline #839496
+#            separator  #586e75
+#            focused_workspace  #b58900 #b58900 #002b36
+#            active_workspace   #586e75 #586e75 #002b36
+#            inactive_workspace #073642 #002b36 #839496
+#            urgent_workspace   #dc322f #dc322f #fdf6e3
+#     }
+# }
 
 include ~/.config/sway/conf.d/*
