@@ -15,6 +15,9 @@ case $1 in
         create_dir
         grim "$SCREENS_DIR/$(date +%Y-%m-%d_%H-%M-%S).png"
         ;;
+    "i")
+        /home/difrex/projects/imgur-screenshot/imgur-screenshot
+        ;;
     *)
         exit 0
         ;;

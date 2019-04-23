@@ -250,10 +250,11 @@ bindsym $mod+Shift+w exec ~/.config/sway/scripts/set_wallpaper.py
 #   / ___/ ___/ ___/ _ \/ _ \/ __ \/ ___/ __ \/ __ \/ __/ ___/
 #  (__  ) /__/ /  /  __/  __/ / / (__  ) / / / /_/ / /_(__  )
 # /____/\___/_/   \___/\___/_/ /_/____/_/ /_/\____/\__/____/
-set $mode_screenshot (r) Region, (a) All
+set $mode_screenshot (r) Region, (a) All, (i) Imgur upload
 mode "$mode_screenshot" {
     bindsym r exec --no-startup-id ~/.config/sway/scripts/screenshot.sh r, mode "default"
     bindsym a exec --no-startup-id ~/.config/sway/scripts/screenshot.sh a, mode "default"
+    bindsym i exec --no-startup-id ~/.config/sway/scripts/screenshot.sh i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -285,70 +286,6 @@ mode "$mode_display" {
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
 
-
-#              _            _             _
-#             | |          | |           | |
-#   __ _ _   _| |_ ___  ___| |_ __ _ _ __| |_
-#  / _` | | | | __/ _ \/ __| __/ _` | '__| __|
-# | (_| | |_| | || (_) \__ \ || (_| | |  | |_
-#  \__,_|\__,_|\__\___/|___/\__\__,_|_|   \__|
-# exec_always compton
-exec_always ~/.local/bin/mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
-
-# Apply theme and change background
-exec ~/.config/sway/scripts/set_wallpaper.py
-# exec_always --no-startup-id "xwinwrap -ov -ni -fs -- mpv -wid WID --keepaspect=no --loop /home/difrex/Изображения/wallpapers/wl6.gif"
-
-exec_always nm-applet --indicator
-
-# Scratchpads select
-bindsym $mod+Alt+w exec --no-startup-id ~/.config/sway/scripts/floating_windows
-
-# MATTERMOST
-for_window [instance="mattermost-desktop|mattermost"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
-exec --no-startup-id exec /home/difrex/soft/mattermost-desktop-3.7.1-linux-x64/mattermost-desktop-3.7.1/mattermost-desktop
-bindsym $mod+Shift+m [instance="mattermost-desktop|mattermost"] scratchpad show
-
-# Gradio
-for_window [instance="gradio|Gradio"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
-bindsym $mod+Shift+g [instance="gradio|Gradio"] scratchpad show
-
-# MS Teams
-for_window [class="Chromium" title="Microsoft Teams"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
-exec --no-startup-id exec chromium --app=https://teams.microsoft.com/
-bindsym $mod+Shift+z [class="Chromium" title="Microsoft Teams"] scratchpad show
-
-# Emacs
-exec --no-startup-id i3-msg 'workspace 3:; exec emacsclient -c'
-bindsym $mod+Shift+n [instance="emacs.*"] scratchpad show
-
-# Launch lollypop in scratchpad
-bindsym $mod+Shift+l [instance="lollypop*"] scratchpad show
-for_window [instance="lollypop"] floating enable, move absolute position 180 150, resize set 1556 950, move scratchpad
-
-# Skype
-for_window [instance="skype.*|Skype.*"] floating enable, move absolute position 100 120, resize set 1556 950, move scratchpad
-bindsym $mod+Shift+s [instance="skype.*|Skype.*"] scratchpad show
-
-# Firefox
-for_window [instance="firefox"] move container to $workspace1
-exec --no-startup-id firefox
-
-# Epiphany
-# for_window [class="Epiphany"] move container to $workspace1
-# exec --no-startup-id epiphany
-
-exec --no-startup-id i3-msg 'workspace 2:; exec gnome-terminal'
-
-# Enable floating for Nautilus
-for_window [instance="nautilus"] floating enable, move absolute position 140 250, resize set 1256 650
-
-# Enable floating for calendar
-# for_window [class="Yad"] floating enable
-
-# Enable floating for telegram
-for_window [class="Telegram"] floating enable, move absolute position 1325 138, resize set 522 965, move scratchpad
-bindsym $mod+Shift+t [class="Telegram"] scratchpad show
 
 #            _
 #           | |
