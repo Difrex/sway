@@ -24,7 +24,11 @@ font pango:Source Code Pro 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
+# Dark
+# bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
+# Light
+bindsym $mod+Return exec gnome-terminal --profile='Solarized Light'
+
 # use GNU Emacs eshell as an terminal emulatory
 # bindsym $mod+Shift+Return exec emacsclient -c -e "(eshell 'N)"
 
@@ -96,7 +100,7 @@ bindsym --to-code $mod+Shift+f floating toggle
 bindsym --to-code $mod+Control+z focus mode_toggle
 
 # exit i3 (logs you out of your X session)
-bindsym --to-code $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym --to-code $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'"
 
 # Lock screen
 bindsym --to-code $mod+l exec ~/.config/sway/scripts/lock.sh
@@ -240,7 +244,7 @@ bindsym $mod+minus scratchpad show
 hide_edge_borders smart
 
 # Wallpapers
-output "*" background /home/difrex/Изображения/wallpapers/collection/Landscapes/1490822343634.jpg fill
+output "*" background ~/Изображения/wallpapers/collection/Landscapes/landscape_1.jpg fill
 
 # Set random wallpaper
 bindsym --to-code $mod+Shift+w exec ~/.config/sway/scripts/set_wallpaper.py
@@ -294,31 +298,31 @@ bindsym $mod+x mode "$mode_display"
 # | (_| (_) | | (_) | |  \__ \
 #  \___\___/|_|\___/|_|  |___/
 # Solarized dark
-client.focused          #002b36 #6c71c4 #fdf6e3 #268bd2 #6c71c4
-client.focused_inactive #002b36 #073642 #839496 #073642 #073642
-client.unfocused        #002b36 #073642 #839496 #073642 #073642
-client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
+# client.focused          #002b36 #6c71c4 #fdf6e3 #268bd2 #6c71c4
+# client.focused_inactive #002b36 #073642 #839496 #073642 #073642
+# client.unfocused        #002b36 #073642 #839496 #073642 #073642
+# client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
 
 # Solarized light
-# client.focused         	#d33682	#d33682	#002b36 #d33682 #d33682
-# client.focused_inactive	#657b83	#002b36	#657b83	#268bd2 #268bd2
-# client.unfocused       	#657b83	#002b36	#657b83	#268bd2 #268bd2
-# client.urgent		    #657b83	#002b36	#657b83	#268bd2 #268bd2
+client.focused         	#d33682	#d33682	#002b36 #d33682 #d33682
+client.focused_inactive	#657b83	#002b36	#657b83	#268bd2 #268bd2
+client.unfocused       	#657b83	#002b36	#657b83	#268bd2 #268bd2
+client.urgent		    #657b83	#002b36	#657b83	#268bd2 #268bd2
 
-# bar {
-#     # swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
-#     # status_command i3blocks -c ~/.config/sway/i3blocks.conf
-#     position top
-#     colors {
-#            # Solarized dark
-#            background #002b36
-#            statusline #839496
-#            separator  #586e75
-#            focused_workspace  #b58900 #b58900 #002b36
-#            active_workspace   #586e75 #586e75 #002b36
-#            inactive_workspace #073642 #002b36 #839496
-#            urgent_workspace   #dc322f #dc322f #fdf6e3
-#     }
-# }
+bar {
+    swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
+    # status_command i3blocks -c ~/.config/sway/i3blocks.conf
+    position top
+    colors {
+           # Solarized dark
+           background #002b36
+           statusline #839496
+           separator  #586e75
+           focused_workspace  #b58900 #b58900 #002b36
+           active_workspace   #586e75 #586e75 #002b36
+           inactive_workspace #073642 #002b36 #839496
+           urgent_workspace   #dc322f #dc322f #fdf6e3
+    }
+}
 
 include ~/.config/sway/conf.d/*

@@ -5,7 +5,10 @@
 # | (_| | |_| | || (_) \__ \ || (_| | |  | |_
 #  \__,_|\__,_|\__\___/|___/\__\__,_|_|   \__|
 # exec_always compton
-exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
+# Dark
+# exec_always mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
+# Light
+exec_always mako --font 'Source Code Pro 10' --background-color '#fdf6e3' --text-color '#657b83' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
 
 # Apply theme and change background
 exec ~/.config/sway/scripts/set_wallpaper.py
