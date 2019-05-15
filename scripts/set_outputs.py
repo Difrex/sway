@@ -3,6 +3,8 @@
 import os
 import sys
 import json
+import pyudev
+import time
 
 
 def get_outputs():
@@ -64,6 +66,13 @@ output DP-1 disable
 """
 
 
+def two_templ_dp1():
+    return """output eDP-1 pos 1920 0 scale 1.4 enable
+output HDMI-A-2 pos 0 0 disable
+output DP-1 pos 0 0 enable
+"""
+
+
 def autoswich(outputs):
     if three_mons(outputs):
         write_templ(three_mons_templ())
@@ -82,7 +91,33 @@ def swaymsg(templ):
     print(json.loads(os.popen("swaymsg '" + templ + "'").read())[0]["success"])
 
 
+def udev_watcher():
+    context = pyudev.Context()
+    monitor = pyudev.Monitor.from_netlink(context)
+    monitor.filter_by('drm')
+    for dev in iter(monitor.poll, None):
+        print("Monitor configuration change")
+        time.sleep(2)
+        outputs = get_outputs()
+        if len(outputs) == 3:
+            print("Two external monitors detected")
+            swaymsg(three_mons_templ())
+        elif len(outputs) == 2:
+            print("Enable one external monitor")
+            for output in outputs:
+                if output["name"] == "HDMI-A-2":
+                    print("HDMI-A-2 detected")
+                    swaymsg(two_templ())
+                elif output["name"] == "DP-1":
+                    swaymsg(two_templ_dp1())
+                    print("DP-1 detected")
+        else:
+            print("Enable only internal screen")
+            swaymsg(single_templ())
+
+
 if __name__ == "__main__":
+    # Cli
     if len(sys.argv) > 1:
         if sys.argv[1] == "1":
             write_templ(single_templ())
@@ -98,4 +133,4 @@ if __name__ == "__main__":
         elif sys.argv[1] == "d":
             swaymsg(disable_hidpi())
     else:
-        autoswich(connected())
+        udev_watcher()
