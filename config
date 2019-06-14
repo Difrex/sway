@@ -304,12 +304,10 @@ bindsym $mod+x mode "$mode_display"
 # client.urgent           #002b36 #dc322f #fdf6e3 #002b36 #002b36
 
 # Solarized light
-client.focused         	#d33682	#d33682	#002b36 #d33682 #d33682
-client.focused_inactive	#657b83	#002b36	#657b83	#268bd2 #268bd2
-client.unfocused       	#657b83	#002b36	#657b83	#268bd2 #268bd2
+client.focused         	#d33682	#d33682	#002b36 #268bd2 #2aa198
+client.focused_inactive	#657b83	#002b36	#657b83	#268bd2 #fdf6e3
+client.unfocused       	#657b83	#002b36	#657b83	#268bd2 #fdf6e3
 client.urgent		    #657b83	#002b36	#657b83	#268bd2 #268bd2
-
-exec_always ~/.config/sway/scripts/waybar.sh
 
 # bar {
 #     # swaybar_command waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
@@ -335,5 +333,11 @@ exec_always ~/.config/sway/scripts/waybar.sh
 #            urgent_workspace   #f2777a #f2777a #ffffff
 #     }
 # }
+
+# Configure laptop mode
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop scale 1.5 enable
+
 
 include ~/.config/sway/conf.d/*

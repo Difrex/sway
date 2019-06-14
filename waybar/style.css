@@ -8,7 +8,7 @@ window#waybar {
     background: #fdf6e3;        /* Light */
     /* color: #839496;             /\* Dark *\/ */
     color: #657b83;             /* Light */
-    opacity: 0.80;
+    opacity: 1;
 }
 
 #custom-right-arrow-dark, #custom-left-arrow-dark {

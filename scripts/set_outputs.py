@@ -45,29 +45,29 @@ output DP-1 pos 1920 0 enable
 
 
 def single_templ():
-    return """output eDP-1 scale 1.4 enable
+    return """output eDP-1 scale 1.45 enable
 output HDMI-A-2 disable
 output DP-1 disable
 """
 
 
 def enable_hidpi():
-    return "output eDP-1 scale 1.4 enable"
+    return "output eDP-1 scale 1.45 enable"
 
 
 def disable_hidpi():
-    return "output eDP-1 scale 1.4 disable"
+    return "output eDP-1 scale 1.45 disable"
 
 
 def two_templ():
-    return """output eDP-1 pos 1920 0 scale 1.4 enable
+    return """output eDP-1 pos 1920 0 scale 1.45 enable
 output HDMI-A-2 pos 0 0 enable
 output DP-1 disable
 """
 
 
 def two_templ_dp1():
-    return """output eDP-1 pos 1920 0 scale 1.4 enable
+    return """output eDP-1 pos 1920 0 scale 1.45 enable
 output HDMI-A-2 pos 0 0 disable
 output DP-1 pos 0 0 enable
 """

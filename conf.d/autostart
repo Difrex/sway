@@ -21,7 +21,7 @@ bindsym --to-code $mod+Alt+w exec --no-startup-id ~/.config/sway/scripts/floatin
 
 # MATTERMOST
 for_window [instance="mattermost-desktop|mattermost"] floating enable, move absolute position 180 50, resize set 1556 950, move scratchpad
-exec --no-startup-id exec /home/difrex/soft/mattermost-desktop-3.7.1-linux-x64/mattermost-desktop-3.7.1/mattermost-desktop
+exec --no-startup-id exec mattermost-desktop
 bindsym --to-code $mod+Shift+m [instance="mattermost-desktop|mattermost"] scratchpad show
 
 # Gradio
@@ -64,3 +64,6 @@ for_window [app_id="org.gnome.Nautilus"] floating enable
 # Enable floating for telegram
 for_window [class="Telegram"] floating enable, move absolute position 1325 138, resize set 522 965, move scratchpad
 bindsym --to-code $mod+Shift+t [class="Telegram"] scratchpad show
+
+# Waybar
+exec_always ~/.config/sway/scripts/waybar.sh
