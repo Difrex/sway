@@ -1,0 +1,6 @@
+# Wallpapers
+# output "*" background ~/Изображения/wallpapers/collection/Landscapes/landscape_1.jpg fill
+exec_always --no-startup-id ~/.config/sway/scripts/timed.sh
+
+# Set random wallpaper
+bindsym --to-code $mod+Shift+w exec ~/.config/sway/scripts/set_wallpaper.py
