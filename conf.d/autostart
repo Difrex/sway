@@ -11,6 +11,9 @@
 exec_always mako --font 'Source Code Pro 10' --background-color '#fdf6e3' --text-color '#657b83' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
 bindsym --to-code $mod+Alt+n exec --no-startup-id ~/.config/sway/scripts/show_last_notification.py
 
+# Transparent inactive windows
+exec --no-startup-id ~/.local/bin/tr_in
+
 # Apply theme and change background
 exec ~/.config/sway/scripts/set_wallpaper.py
 # exec_always --no-startup-id "xwinwrap -ov -ni -fs -- mpv -wid WID --keepaspect=no --loop /home/difrex/Изображения/wallpapers/wl6.gif"
