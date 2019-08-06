@@ -12,7 +12,7 @@ exec_always mako --font 'Source Code Pro 10' --background-color '#fdf6e3' --text
 bindsym --to-code $mod+Alt+n exec --no-startup-id ~/.config/sway/scripts/show_last_notification.py
 
 # Transparent inactive windows
-exec --no-startup-id ~/.local/bin/tr_in
+exec_always --no-startup-id ~/.config/sway/scripts/tr_in.sh
 
 # Apply theme and change background
 exec ~/.config/sway/scripts/set_wallpaper.py

@@ -27,8 +27,8 @@ floating_modifier $mod
 # Dark
 # bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
 # Light
-# bindsym $mod+Return exec gnome-terminal --profile='Solarized Light'
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal --profile='Solarized Light'
+# bindsym $mod+Return exec kitty
 
 # use GNU Emacs eshell as an terminal emulatory
 # bindsym $mod+Shift+Return exec emacsclient -c -e "(eshell 'N)"

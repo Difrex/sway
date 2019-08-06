@@ -120,13 +120,13 @@ if __name__ == "__main__":
     # Cli
     if len(sys.argv) > 1:
         if sys.argv[1] == "1":
-            write_templ(single_templ())
+            # write_templ(single_templ())
             swaymsg(single_templ())
         elif sys.argv[1] == "2":
-            write_templ(two_templ())
+            # write_templ(two_templ())
             swaymsg(two_templ())
         elif sys.argv[1] == "3":
-            write_templ(three_mons_templ())
+            # write_templ(three_mons_templ())
             swaymsg(three_mons_templ())
         elif sys.argv[1] == "h":
             swaymsg(enable_hidpi())

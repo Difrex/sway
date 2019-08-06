@@ -1,3 +1,0 @@
-output eDP-1 disable
-output HDMI-A-2 pos 0 0 enable
-output DP-1 pos 1920 0 enable
