@@ -48,8 +48,15 @@ window#waybar {
 }
 
 #mode {
-    background: #073642;
-    border-bottom: 3px solid #fdf6e3;
+    /* background: #073642;        /\* Dark *\/ */
+    /* background: #eee8d5;        /\* Light *\/ */
+    background: #6c71c4;
+    color: #fdf6e3;
+    border-left: 4px solid #fdf6e3;
+    border-right: 4px solid #fdf6e3;
+    border-radius: 5px;
+    border-color: #6c71c4;
+    padding: 0 2px;
 }
 
 #workspaces button {
@@ -73,8 +80,9 @@ window#waybar {
     opacity: 1;
 }
 #workspaces button:hover {
-    background: #002b36;
-    border: #002b36;
+    background: #6c71c4;
+    border: #6c71c4;
+    color: #fdf6e3;
     border-radius: 50%;
     padding: 0 3px;
     opacity: 1;
