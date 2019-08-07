@@ -268,8 +268,6 @@ bindsym --to-code $mod+c mode "$mode_screenshot"
 # | | | | | | (_) | | | | | || (_) | |  \__ \
 # |_| |_| |_|\___/|_| |_|_|\__\___/|_|  |___/
 
-# Autodetect monitors
-exec --no-startup-id ~/.config/sway/scripts/set_outputs.py
 set $mode_display (1) Single, (2) Two, (3) Three, (h) HiDPI, (d) disable HiDPI
 mode "$mode_display" {
     bindsym 1 exec --no-startup-id ~/.config/sway/scripts/set_outputs.py 1, mode "default"
@@ -290,5 +288,7 @@ set $laptop eDP-1
 bindswitch lid:on output $laptop disable
 bindswitch lid:off output $laptop scale 1.5 enable
 
+# Autodetect monitors
+exec_always --no-startup-id ~/.config/sway/scripts/set_outputs.py
 
 include ~/.config/sway/conf.d/*
