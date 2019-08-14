@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 run_waybar() {
-    waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css
+    waybar -c ~/.config/sway/waybar-enabled/config -s ~/.config/sway/waybar-enabled/style.css
 }
 
 restart_waybar() {

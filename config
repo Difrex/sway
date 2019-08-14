@@ -23,11 +23,6 @@ font pango:Source Code Pro 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-# Dark
-# bindsym $mod+Return exec gnome-terminal --profile='Solarized Dark'
-# Light
-bindsym $mod+Return exec gnome-terminal --profile='Solarized Light'
 # bindsym $mod+Return exec kitty
 
 # use GNU Emacs eshell as an terminal emulatory
@@ -156,11 +151,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym --to-code $mod+Ctrl+r move workspace to output right
 bindsym --to-code $mod+Ctrl+l move workspace to output left
 
-# Autolayout settings
-exec --no-startup-id ~/.local/bin/swaymgr
-bindsym --to-code $mod+Alt+s exec ~/.config/sway/scripts/auto_layout.py 'spiral'
-bindsym --to-code $mod+Alt+l exec ~/.config/sway/scripts/auto_layout.py 'left'
-bindsym --to-code $mod+Alt+m exec ~/.config/sway/scripts/auto_layout.py 'manual'
 
 #                               _   _   _
 #                              | | | | (_)
@@ -181,7 +171,7 @@ assign [class="gnome-terminal"] $workspace2
 # reload the configuration file
 bindsym --to-code $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym --to-code $mod+Shift+r restart
+# bindsym --to-code $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -289,6 +279,6 @@ bindswitch lid:on output $laptop disable
 bindswitch lid:off output $laptop scale 1.5 enable
 
 # Autodetect monitors
-exec_always --no-startup-id ~/.config/sway/scripts/set_outputs.py
+# exec_always --no-startup-id ~/.config/sway/scripts/monitors.py
 
-include ~/.config/sway/conf.d/*
+include ~/.config/sway/conf-enabled/*.conf

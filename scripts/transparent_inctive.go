@@ -1,4 +1,4 @@
-// go build -o ~/.loca/bin/tr_in transparent_inctive.go
+// go build -o ~/.local/bin/tr_in transparent_inctive.go
 package main
 
 import (
