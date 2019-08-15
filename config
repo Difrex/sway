@@ -281,4 +281,8 @@ bindswitch lid:off output $laptop scale 1.5 enable
 # Autodetect monitors
 # exec_always --no-startup-id ~/.config/sway/scripts/monitors.py
 
+# Switch theme
+bindsym --to-code $mod+Ctrl+Shift+d exec --no-startup-id ~/.config/sway/scripts/switch_theme.sh dark
+bindsym --to-code $mod+Ctrl+Shift+l exec --no-startup-id ~/.config/sway/scripts/switch_theme.sh light
+
 include ~/.config/sway/conf-enabled/*.conf

@@ -108,5 +108,10 @@ ln -s ../waybar-available/style-light.css style.css
 * Move window to the scratchpad: **$mod+Shift+minus**
 * Show scratchpad: **$mod+minus**
 * Show modeline for monitors configuration: **$mod+x**
+
+For a theme switching you need a [wal](https://github.com/dylanaraps/pywal)
+* Switch to light theme: **$mod+Ctrl+Shift+l**
+* Switch to dark theme: **$mod+Ctrl+Shift+d**
+
 * Reload config: **$mod+Shift+c**
 * Shutdown a session: **$mod+Shift+e**

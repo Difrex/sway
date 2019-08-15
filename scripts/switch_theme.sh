@@ -10,9 +10,19 @@ case $1 in dark)
                rm -f $HOME/.config/sway/waybar-enabled/style.css
                ln -s $HOME/.config/sway/waybar-available/style-dark.css $HOME/.config/sway/waybar-enabled/style.css
                swaymsg reload
+
+               # Emacs
                emacsclient -e '(set-dark-theme)'
+
+               # GTK
                gsettings set org.gnome.desktop.interface gtk-theme 'Numix Solarized'
                gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
+
+               # Terminals
+               wal -e -f solarized
+
+               # Rofi
+               sed -i 's@rofi.theme: /usr/share/rofi/themes/gruvbox-light-soft.rasi@rofi.theme: /usr/share/rofi/themes/solarized.rasi@' $HOME/.config/rofi/config
                ;;
             light)
                rm -f $HOME/.config/sway/conf-enabled/colors-dark.conf
@@ -27,6 +37,8 @@ case $1 in dark)
                emacsclient -e '(set-light-theme)'
                gsettings set org.gnome.desktop.interface gtk-theme 'Numix Solarized Light'
                gsettings set org.gnome.desktop.interface icon-theme 'breeze'
+               wal -e -l -f solarized
+               sed -i 's@rofi.theme: /usr/share/rofi/themes/solarized.rasi@rofi.theme: /usr/share/rofi/themes/gruvbox-light-soft.rasi@' $HOME/.config/rofi/config
                ;;
             *)
                 echo "Nothing to do"
