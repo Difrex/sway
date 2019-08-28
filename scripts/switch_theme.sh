@@ -15,7 +15,7 @@ case $1 in dark)
                emacsclient -e '(set-dark-theme)'
 
                # GTK
-               gsettings set org.gnome.desktop.interface gtk-theme 'Numix Solarized'
+               gsettings set org.gnome.desktop.interface gtk-theme 'Plane-dark'
                gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
 
                # Terminals
@@ -35,7 +35,7 @@ case $1 in dark)
                ln -s $HOME/.config/sway/waybar-available/style-light.css $HOME/.config/sway/waybar-enabled/style.css
                swaymsg reload
                emacsclient -e '(set-light-theme)'
-               gsettings set org.gnome.desktop.interface gtk-theme 'Numix Solarized Light'
+               gsettings set org.gnome.desktop.interface gtk-theme 'Plane'
                gsettings set org.gnome.desktop.interface icon-theme 'breeze'
                wal -e -l -f solarized
                sed -i 's@rofi.theme: /usr/share/rofi/themes/solarized.rasi@rofi.theme: /usr/share/rofi/themes/gruvbox-light-soft.rasi@' $HOME/.config/rofi/config

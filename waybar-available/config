@@ -78,10 +78,10 @@
         "format": "{}",
         "exec": "~/.config/sway/blocks/current_play.sh",
         "interval": 1,
-        "on-click": "mpc prev",
-        "on-click-right": "mpc next",
-        "on-scroll-up": "mpc toggle",
-        "on-scroll-down": "mpc toggle",
+        "on-click": "~/.config/sway/blocks/current_play.sh 1",
+        "on-click-right": "~/.config/sway/blocks/current_play.sh 3",
+        "on-scroll-up": "~/.config/sway/blocks/current_play.sh 2",
+        "on-scroll-down": "~/.config/sway/blocks/current_play.sh 2",
         "tooltip": false
     },
     "custom/mail": {
