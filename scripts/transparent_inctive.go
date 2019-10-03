@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/Difrex/gosway/ipc"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -45,12 +46,14 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 	o, err := con.RunSwayCommand(fmt.Sprintf("[con_id=%d] opacity %d", focused.ID, 1))
 	if err != nil {
 		fmt.Println(string(o))
-		panic(err)
+		log.Error(err)
+		return
 	}
 
 	windows, err := con.GetFocusedWorkspaceWindows()
 	if err != nil {
-		panic(err)
+		log.Error(err)
+		return
 	}
 
 	for _, window := range windows {
@@ -58,21 +61,24 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 			o, err := window.Command(fmt.Sprintf("opacity %1.1f", OPACITY))
 			if err != nil {
 				fmt.Println(string(o))
-				panic(err)
+				log.Error(err)
+				return
 			}
 		}
 	}
 
 	tree, err := con.GetTree()
 	if err != nil {
-		panic(err)
+		log.Error(err)
+		return
 	}
 	for _, window := range ipc.GetAllFloatingWindows(tree.Nodes) {
 		if int(window.ID) != focused.ID {
 			o, err := window.Command(fmt.Sprintf("opacity %1.1f", OPACITY))
 			if err != nil {
 				fmt.Println(string(o))
-				panic(err)
+				log.Error(err)
+				return
 			}
 		}
 	}
