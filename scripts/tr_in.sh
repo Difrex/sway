@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export TR_IN_OPACITY="0.95"
 PID=$(pgrep tr_in)
 
 if [[ -z $PID ]]; then

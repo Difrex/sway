@@ -26,16 +26,15 @@ func main() {
 		panic(err)
 	}
 
-	o, err := sub.SendCommand(ipc.IPC_SUBSCRIBE, "[\"window\"]")
+	_, err = sub.SendCommand(ipc.IPC_SUBSCRIBE, "[\"window\"]")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(string(o))
 
 	ch := make(chan *ipc.Event)
 	go sub.SubscribeListener(ch)
 
-	fmt.Println("Waiting for the events")
+	log.Info("Waiting for the events")
 
 	for {
 		event := <-ch
@@ -46,9 +45,8 @@ func main() {
 }
 
 func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
-	o, err := con.RunSwayCommand(fmt.Sprintf("[con_id=%d] opacity %d", focused.ID, 1))
+	_, err := con.RunSwayCommand(fmt.Sprintf("[con_id=%d] opacity %d", focused.ID, 1))
 	if err != nil {
-		fmt.Println(string(o))
 		log.Error(err)
 		checkSway()
 		return
@@ -81,9 +79,8 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 	}
 	for _, window := range ipc.GetAllFloatingWindows(tree.Nodes) {
 		if int(window.ID) != focused.ID {
-			o, err := window.Command(fmt.Sprintf("opacity %1.1f", getOpacity()))
+			_, err := window.Command(fmt.Sprintf("opacity %1.1f", getOpacity()))
 			if err != nil {
-				fmt.Println(string(o))
 				log.Error(err)
 				checkSway()
 				return
