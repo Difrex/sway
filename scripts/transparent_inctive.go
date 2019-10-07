@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Difrex/gosway/ipc"
 	log "github.com/sirupsen/logrus"
@@ -47,12 +48,14 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 	if err != nil {
 		fmt.Println(string(o))
 		log.Error(err)
+		checkSway()
 		return
 	}
 
 	windows, err := con.GetFocusedWorkspaceWindows()
 	if err != nil {
 		log.Error(err)
+		checkSway()
 		return
 	}
 
@@ -62,6 +65,7 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 			if err != nil {
 				fmt.Println(string(o))
 				log.Error(err)
+				checkSway()
 				return
 			}
 		}
@@ -70,6 +74,7 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 	tree, err := con.GetTree()
 	if err != nil {
 		log.Error(err)
+		checkSway()
 		return
 	}
 	for _, window := range ipc.GetAllFloatingWindows(tree.Nodes) {
@@ -78,8 +83,16 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 			if err != nil {
 				fmt.Println(string(o))
 				log.Error(err)
+				checkSway()
 				return
 			}
 		}
+	}
+}
+
+func checkSway() {
+	if !ipc.IsSwayAvailable() {
+		log.Error("Sway not available")
+		os.Exit(2)
 	}
 }
