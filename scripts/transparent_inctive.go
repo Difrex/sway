@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 
+	"strconv"
+
 	"github.com/Difrex/gosway/ipc"
 	log "github.com/sirupsen/logrus"
 )
@@ -61,7 +63,7 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 
 	for _, window := range windows {
 		if int(window.ID) != focused.ID {
-			o, err := window.Command(fmt.Sprintf("opacity %1.1f", OPACITY))
+			o, err := window.Command(fmt.Sprintf("opacity %1.1f", getOpacity()))
 			if err != nil {
 				fmt.Println(string(o))
 				log.Error(err)
@@ -79,7 +81,7 @@ func changeTransparency(con *ipc.SwayConnection, focused ipc.Container) {
 	}
 	for _, window := range ipc.GetAllFloatingWindows(tree.Nodes) {
 		if int(window.ID) != focused.ID {
-			o, err := window.Command(fmt.Sprintf("opacity %1.1f", OPACITY))
+			o, err := window.Command(fmt.Sprintf("opacity %1.1f", getOpacity()))
 			if err != nil {
 				fmt.Println(string(o))
 				log.Error(err)
@@ -95,4 +97,18 @@ func checkSway() {
 		log.Error("Sway not available")
 		os.Exit(2)
 	}
+}
+
+func getOpacity() float64 {
+	o := os.Getenv("TR_IN_OPACITY")
+	if o == "" {
+		return OPACITY
+	}
+
+	opacity, err := strconv.ParseFloat(o, 1)
+	if err != nil {
+		log.Error(err)
+		return OPACITY
+	}
+	return opacity
 }
