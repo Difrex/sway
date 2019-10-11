@@ -217,8 +217,10 @@ bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 bindsym XF86KbdBrightnessUp exec ~/.config/sway/scripts/set_kb_light.py --up
 bindsym XF86KbdBrightnessDown exec ~/.config/sway/scripts/set_kb_light.py --down
 
+bindsym XF86PowerOff exec exec "swaynag -t warning -m 'You pressed the poweroff shortcut. Do you really want to power off?' -b 'Yes, poweroff' 'systemctl poweroff'"
+
 # New window size
-default_border pixel 6
+default_border pixel 1
 default_floating_border pixel 2
 
 # Scratchpad
@@ -227,12 +229,6 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
-
-# smart_gaps on
-# smart_borders on
-# gaps inner 15
-# gaps outer 10
-hide_edge_borders smart
 
 #                                         __          __
 #    __________________  ___  ____  _____/ /_  ____  / /______

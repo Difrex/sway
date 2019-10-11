@@ -1,0 +1,11 @@
+[Unit]
+Description=Transparent inactive windows
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/difrex/.local/bin/swaymgr
+Restart=on-failure
+
+[Install]
+WantedBy=sway-session.target

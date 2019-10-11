@@ -1,0 +1,12 @@
+[Unit]
+Description=Transparent inactive windows
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Environment=TR_IN_OPACITY=0.55
+ExecStart=/home/difrex/.local/bin/tr_in
+Restart=on-failure
+
+[Install]
+WantedBy=sway-session.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Firefox web browser
+PartOf=graphical-session.target
+
+[Service]
+ExecStartPre=/usr/bin/systemctl --user import-environment
+ExecStart=/usr/lib/firefox/firefox
+Environment=DISPLAY=:0
+Environment=XDG_SESSION_TYPE=wayland
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=GDK_BACKEND=wayland
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=sway-session.target

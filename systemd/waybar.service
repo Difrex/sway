@@ -1,0 +1,13 @@
+[Unit]
+Description=Highly customizable Wayland bar for Sway and Wlroots based compositors.
+Documentation=https://github.com/Alexays/Waybar/wiki/
+PartOf=graphical-session.target
+
+[Service]
+# ExecStart=/home/difrex/.config/sway/systemd/waybar.sh
+ExecStart=/usr/bin/waybar -c /home/difrex/.config/sway/waybar-enabled/config -s /home/difrex/.config/sway/waybar-enabled/style.css
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=sway-session.target
