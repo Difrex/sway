@@ -1,0 +1,120 @@
+* {
+    font-size: 12px;
+    font-family: Source Code Pro;
+}
+
+window#waybar {
+    background: #2b303b;        /* Dark */
+    color: #c0c5ce;             /* Dark */
+    opacity: 1;
+}
+
+#custom-right-arrow-dark, #custom-left-arrow-dark {
+    color: #232830;             /* Dark */
+    opacity: 1;
+}
+#custom-right-arrow-light, #custom-left-arrow-light {
+    color: #2b303b;             /* Dark */
+    background: #232830;        /* Dark */
+    opacity: 1;
+}
+
+#workspaces, #clock.1, #clock.2, #clock.3, #pulseaudio, #backlight, #memory, #cpu, #temperature, #battery, #tray, #mpd, #mail {
+    background: #232830;        /* Dark */
+    opacity: 1;
+}
+
+#clock.2 {
+    font-weight: bold;
+    opacity: 1;
+}
+
+#custom-mpd, #custom-mail, #custom-pacman, #custom-layout, #custom-autolayout {
+    background: #232830;        /* Dark */
+    padding: 0 10px;
+    opacity: 1;
+}
+
+#custom-mail {
+    color: #2aa198;
+    opacity: 1;
+}
+
+#mode {
+    /* background: #232830;        /\* Dark *\/ */
+    /* background: #eee8d5;        /\* Light *\/ */
+    background: #6c71c4;
+    color: #fdf6e3;
+    border-left: 4px solid #fdf6e3;
+    border-right: 4px solid #fdf6e3;
+    border-radius: 5px;
+    border-color: #6c71c4;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    color: #fdf6e3;             /* Dark */
+    opacity: 1;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#workspaces button.focused {
+    color: #268bd2;
+    opacity: 1;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    opacity: 1;
+}
+#workspaces button:hover {
+    background: #6c71c4;
+    border: #6c71c4;
+    color: #fdf6e3;
+    border-radius: 50%;
+    padding: 0 3px;
+    opacity: 1;
+}
+
+#pulseaudio {
+    color: #268bd2;
+    opacity: 1;
+}
+#backlight {
+    color: #b58900;
+    opacity: 1;
+}
+#memory {
+    color: #2aa198;
+    opacity: 1;
+}
+#temperature {
+    color: #b58900;
+    opacity: 1;
+}
+#cpu, #custom-autolayout {
+    color: #6c71c4;
+    opacity: 1;
+}
+#custom-mpd {
+    color: #d33682;
+    opacity: 1;
+}
+#battery {
+    color: #859900;
+    opacity: 1;
+}
+
+#clock, #pulseaudio, #backlight, #memory, #cpu, #temp, #battery, #mpd, #mail {
+    padding: 0 10px;
+    opacity: 1;
+}
+
+#clock {
+    color: #c0c5ce;
+    opacity: 0.99;
+}

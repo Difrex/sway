@@ -39,7 +39,7 @@ bindsym --to-code $mod+q kill
 bindsym --to-code $mod+d exec rofi -show run
 
 # rofi-pass
-bindsym --to-code $mod+p exec ~/.local/bin/pm -R
+bindsym --to-code $mod+p exec pm -R
 
 # Reload theme
 # Needs rewrite for the Sway
