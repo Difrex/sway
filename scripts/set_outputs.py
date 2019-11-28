@@ -39,7 +39,7 @@ def single(outputs):
 
 def three_mons_templ():
     return """output eDP-1 disable
-output HDMI-A-2 pos 0 0 enable
+output HDMI-A-2 pos 0 0 transform 270 enable
 output DP-1 pos 1920 0 enable
 """
 
@@ -61,7 +61,7 @@ def disable_hidpi():
 
 def two_templ():
     return """output eDP-1 pos 1920 0 scale 1.45 enable
-output HDMI-A-2 pos 0 0 enable
+output HDMI-A-2 pos 0 0 transform 270 enable
 output DP-1 disable
 """
 
