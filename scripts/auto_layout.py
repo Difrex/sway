@@ -14,7 +14,7 @@ LAYOUTS = {
 
 
 def switch(layout):
-    out = os.popen("/home/difrex/.local/bin/swaymgr -s 'set " + layout + "'").read()
+    out = os.popen("/usr/bin/swaymgr -s 'set " + layout + "'").read()
     if "ok" in out:
         os.popen(f"notify-send Swaymgr 'Switched to <b>{layout}</b> layout'")
     else:
@@ -22,7 +22,7 @@ def switch(layout):
 
 
 def auto_layout_cmd(cmd):
-    return os.popen("/home/difrex/.local/bin/swaymgr -s '" + cmd + "'").read()
+    return os.popen("/usr/bin/swaymgr -s '" + cmd + "'").read()
 
 
 def get_current_layout():

@@ -6,4 +6,4 @@
 export WAYLAND_DISPLAY=wayland-0
 source /home/difrex/.config/sway/systemd/envs.sh
 
-/home/difrex/.local/bin/swaymgr
+/usr/bin/swaymgr
