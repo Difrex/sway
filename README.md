@@ -52,7 +52,7 @@ Keybinding: **$mod+Alt+w**
 
 ### Autolayouting
 
-You need a [swaymgr](https://github.com/Difrex/gosway/tree/master/swaymgr) installed.
+You need a [swaymgr](https://github.com/Difrex/swaymgr) installed.
 
 Enable:
 ```sh
