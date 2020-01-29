@@ -1,1 +1,3 @@
 .current_wallpaper
+conf-enabled/*.conf
+waybar-enabled/*
