@@ -2,6 +2,8 @@
 
 This is my daily setup of the Sway.
 
+![screenshot](screenshots/shot.png)
+
 ## Components
 
 * [Waybar](https://github.com/Alexays/Waybar) -- panel
