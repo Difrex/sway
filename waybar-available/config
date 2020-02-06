@@ -22,7 +22,7 @@
     "modules-right": [
         "custom/left-arrow-dark",
         "pulseaudio",
-        "custom/mpd",
+        "mpd",
         "custom/mail",
         "battery",
         "custom/pacman",
@@ -60,6 +60,11 @@
         "exec": "~/.config/sway/scripts/auto_layout.py",
         "interval": 1
     },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
     "custom/volume": {
         "format": "{icon}  {}",
         "format-bluetooth": "{icon}  {} ",
@@ -83,6 +88,31 @@
         "on-scroll-up": "~/.config/sway/blocks/current_play.sh 2",
         "on-scroll-down": "~/.config/sway/blocks/current_play.sh 2",
         "tooltip": false
+    },
+    "mpd": {
+	    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} <span color=\"#d33682\">{artist} - {title}</span>",
+	    "format-disconnected": "[Disconnected]",
+	    "format-stopped": "[{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped]",
+	    "interval": 2,
+	    "consume-icons": {
+		    "on": " " // Icon shows only when "consume" is on
+	    },
+	    "random-icons": {
+		    "off": " ",
+		    "on": "<span color=\"#f53c3c\"></span> " // Icon grayed out when "random" is off
+	    },
+	    "repeat-icons": {
+		    "on": " "
+	    },
+	    "single-icons": {
+		    "on": "1 "
+	    },
+	    "state-icons": {
+		    "paused": "",
+		    "playing": "<span color=\"#2aa198\"></span>"
+	    },
+	    "tooltip-format": "MPD (connected)",
+	    "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "custom/mail": {
         "format": "{icon}  {}",
@@ -115,7 +145,7 @@
         "interval": 1
     },
     "pulseaudio": {
-        "format": "{icon}  {}",
+        "format": "{icon} {volume}%",
         "interval": 5,
         "format-icons": {
             "default": [
