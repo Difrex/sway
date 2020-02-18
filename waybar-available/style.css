@@ -35,7 +35,7 @@ window#waybar {
     opacity: 1;
 }
 
-#custom-mpd, #custom-mail, #custom-pacman, #custom-layout, #custom-autolayout {
+#custom-mpd, #custom-mail, #custom-pacman, #custom-layout, #custom-autolayout, #mpd {
     /* background: #073642;        /\* Dark *\/ */
     background: #eee8d5;        /* Light */
     padding: 0 10px;
@@ -109,6 +109,10 @@ window#waybar {
     opacity: 1;
 }
 #custom-mpd {
+    color: #d33682;
+    opacity: 1;
+}
+#mpd {
     color: #d33682;
     opacity: 1;
 }
