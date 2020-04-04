@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -143,8 +142,8 @@
                 ""
             ]
         },
-        "exec": "~/.config/sway/blocks/key_layout.py",
-        "interval": 1
+        "exec": "~b/.local/bin/key_layout"
+        // "interval": 1
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -181,7 +180,7 @@
             "",
             ""
         ],
-        "interval": 5
+        "interval": 60
     },
     "tray": {
         "icon-size": 20
