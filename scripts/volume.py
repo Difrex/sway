@@ -4,7 +4,7 @@ import sys
 
 
 def set_volume(v):
-    chan = "1"
+    chan = "2"
     p = subprocess.Popen(["pactl", "set-sink-volume", chan, v])
     p.communicate()
     if p.returncode > 0:
