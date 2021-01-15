@@ -21,7 +21,6 @@
     "modules-right": [
         "custom/left-arrow-dark",
         "pulseaudio",
-        "mpd",
         "custom/mail",
         "battery",
         "custom/pacman",
@@ -142,7 +141,7 @@
                 ""
             ]
         },
-        "exec": "~b/.local/bin/key_layout"
+        "exec": "~/.local/bin/key_layout"
         // "interval": 1
     },
     "pulseaudio": {
