@@ -21,7 +21,8 @@
     "modules-right": [
         "custom/left-arrow-dark",
         "pulseaudio",
-        "custom/mail",
+        "custom/mpd",
+        // "custom/mail",
         "battery",
         "custom/pacman",
         "tray",
@@ -81,10 +82,10 @@
         "format": "{}",
         "exec": "~/.config/sway/blocks/current_play.sh",
         "interval": 1,
-        "on-click": "~/.config/sway/blocks/current_play.sh 1",
-        "on-click-right": "~/.config/sway/blocks/current_play.sh 3",
-        "on-scroll-up": "~/.config/sway/blocks/current_play.sh 2",
-        "on-scroll-down": "~/.config/sway/blocks/current_play.sh 2",
+        "on-click": "playerctl play-pause",
+        // "on-click-right": "playerctl next",
+        // "on-scroll-up": "playerctl ",
+        // "on-scroll-down": "~/.config/sway/blocks/current_play.sh 2",
         "tooltip": false
     },
     "mpd": {
