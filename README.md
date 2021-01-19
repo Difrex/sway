@@ -2,7 +2,7 @@
 
 This is my daily setup of the Sway.
 
-![screenshot](screenshots/shot.png)
+![screenshot](screenshots/shot2.png)
 
 ## Components
 
