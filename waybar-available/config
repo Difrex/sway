@@ -24,6 +24,7 @@
         "custom/mpd",
         // "custom/mail",
         "battery",
+        "custom/screencast",
         "custom/pacman",
         "tray",
         "custom/layout"
@@ -144,6 +145,11 @@
         },
         "exec": "~/.local/bin/key_layout"
         // "interval": 1
+    },
+    "custom/screencast": {
+        "exec": "~/.config/sway/blocks/screencast.sh",
+        "format": "{}",
+        "interval": 1
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

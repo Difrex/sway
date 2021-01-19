@@ -104,6 +104,10 @@ window#waybar {
     color: #d33682;
     opacity: 1;
 }
+#custom-screencast {
+    color: #d33682;
+    opacity: 1;
+}
 #battery {
     color: #859900;
     opacity: 1;
