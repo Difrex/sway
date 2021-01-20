@@ -1,0 +1,8 @@
+profile two_outputs {
+	output eDP-1 position 3830,1080 scale 1
+	output HDMI-A-2 position 0,0 scale 1.4
+}
+
+profile laptop {
+    output eDP-1 position 0,0 scale 1
+}
