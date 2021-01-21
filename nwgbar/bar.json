@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Lock screen",
+    "exec": "/usr/bin/swaylock -i \"'$(cat /home/difrex/.config/sway/.current_wallpaper)'\" --indicator-radius 190 --font 'Source Code Pro' --ring-color '#268bd2'",
+    "icon": "/usr/share/icons/Papirus-Dark/symbolic/actions/system-lock-screen-symbolic.svg"
+  },
+  {
+    "name": "Logout",
+    "exec": "swaymsg exit",
+    "icon": "/usr/share/icons/Papirus-Dark/symbolic/actions/system-log-out-symbolic.svg"
+  },
+  {
+    "name": "Reboot",
+    "exec": "systemctl reboot",
+    "icon": "/usr/share/icons/Papirus-Dark/symbolic/actions/system-reboot-symbolic.svg"
+  },
+  {
+    "name": "Shutdown",
+    "exec": "systemctl -i poweroff",
+    "icon": "/usr/share/icons/Papirus-Dark/symbolic/actions/system-shutdown-symbolic.svg"
+  },
+    {
+        "name": "Suspend",
+        "exec": "systemctl suspend",
+        "icon": "/usr/share/icons/Papirus-Dark/symbolic/actions/system-suspend-symbolic.svg"
+    }
+]
