@@ -8,6 +8,16 @@ import (
 	"github.com/Difrex/gosway/ipc"
 )
 
+const (
+	largeMax    = 250
+	largeMid    = 150
+	largeMin    = 100
+	smallMax    = 100
+	smallMid    = 50
+	smallMin    = 25
+	scaleFactor = 1.1
+)
+
 func main() {
 	sc, err := ipc.NewSwayConnection()
 	if err != nil {
@@ -52,14 +62,28 @@ func horizontalGaps(cc *ipc.SwayConnection) int {
 		log.Println("Error:", err)
 	}
 
+	o, err := cc.GetActiveOutput()
+	if err != nil {
+		return 50
+	}
+
+	max := largeMax
+	mid := largeMid
+	min := largeMin
+	if o.Scale < 1.1 {
+		max = smallMax
+		mid = smallMid
+		min = smallMin
+	}
+
 	switch len(w) {
 	case 1:
-		return 300
+		return max
 	case 2:
-		return 200
+		return mid
 	case 3:
-		return 150
+		return min
 	default:
-		return 50
+		return smallMin
 	}
 }
