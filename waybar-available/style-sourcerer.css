@@ -6,7 +6,7 @@
 window#waybar {
     background: #2b303b;        /* Dark */
     color: #c0c5ce;             /* Dark */
-    opacity: 1;
+    opacity: 0.85;
 }
 
 #custom-right-arrow-dark, #custom-left-arrow-dark {
