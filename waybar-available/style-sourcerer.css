@@ -100,6 +100,10 @@ window#waybar {
     color: #6c71c4;
     opacity: 1;
 }
+#custom-bluetooth {
+    color: #268bd2;
+    opacity: 1;
+}
 #custom-mpd {
     color: #d33682;
     opacity: 1;

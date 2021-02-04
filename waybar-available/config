@@ -5,6 +5,7 @@
         "sway/workspaces",
         "sway/mode",
         "custom/autolayout",
+        "custom/bluetooth",
         "custom/right-arrow-dark"
     ],
     "modules-center": [
@@ -65,6 +66,11 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", ""]
     },
+    "custom/bluetooth": {
+        "format": "{}",
+        "exec": "~/.config/sway/blocks/bluetooth.sh",
+        "interval": 300
+    },
     "custom/volume": {
         "format": "{icon}  {}",
         "format-bluetooth": "{icon}  {} ",
@@ -84,7 +90,7 @@
         "exec": "~/.config/sway/blocks/current_play.sh",
         "interval": 1,
         "on-click": "playerctl play-pause",
-        // "on-click-right": "playerctl next",
+        "on-click-right": "playerctl next",
         // "on-scroll-up": "playerctl ",
         // "on-scroll-down": "~/.config/sway/blocks/current_play.sh 2",
         "tooltip": false
