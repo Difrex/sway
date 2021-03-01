@@ -5,8 +5,12 @@
 
 window#waybar {
     background: #2b303b;        /* Dark */
-    color: #c0c5ce;             /* Dark */
+    /* color: #c0c5ce;             /\* Dark *\/ */
     opacity: 0.85;
+    /* filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)); */
+    /* background: shade(alpha(@borders, 0.9), 1.25); */
+    /* border-bottom: 1px solid @unfocused_borders; */
+    color: @theme_text_color;
 }
 
 #custom-right-arrow-dark, #custom-left-arrow-dark {
@@ -115,6 +119,16 @@ window#waybar {
 #battery {
     color: #859900;
     opacity: 1;
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #clock, #pulseaudio, #backlight, #memory, #cpu, #temp, #battery, #mpd, #mail {

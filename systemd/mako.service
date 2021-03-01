@@ -5,7 +5,7 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/mako --font 'Source Code Pro 10' --background-color '#002b36' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
+ExecStart=/usr/bin/mako --font 'Source Code Pro 10' --background-color '#2b303b' --text-color '#839496' --default-timeout 5000 --width 400 --markup 1 --border-radius 5
 
 [Install]
 WantedBy=sway-session.target

@@ -5,7 +5,7 @@
         "sway/workspaces",
         "sway/mode",
         "custom/autolayout",
-        "custom/bluetooth",
+        //"custom/bluetooth",
         "custom/right-arrow-dark"
     ],
     "modules-center": [
