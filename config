@@ -1,39 +1,228 @@
-# sway config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+include variables
+include outputs
+include autostart
+include workspaces
+include keyboard
+include pointer
+include touchpad
+include effects
 
-# A super key
-set $mod Mod4
-
-# reload the configuration file
-bindsym --to-code $mod+Shift+c reload
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+input 'type:keyboard' {
+    xkb_layout us,ru
+    xkb_options grp:win_space_toggle,ctrl:nocaps,grp_led:scroll
 }
 
-bindsym --to-code $mod+r mode "resize"
+# border & title
+for_window [title="^.*"] border pixel 0, title_format "<b> %class >> %title </b>"
+default_border pixel 0
 
-# New window size
-default_border pixel 1
-default_floating_border pixel 2
+# font
+font pango:go 11
 
-# Switch theme
-bindsym --to-code $mod+Ctrl+Shift+d exec --no-startup-id ~/.config/sway/scripts/switch_theme.sh dark
-bindsym --to-code $mod+Ctrl+Shift+l exec --no-startup-id ~/.config/sway/scripts/switch_theme.sh light
+# mod key used for most binds
+# Mod1 = Alt
+# Mod4 = Super
+set $Mod Mod4
 
-include ~/.config/sway/conf-enabled/*.conf
+# direction keys
+set $up i
+set $down k
+set $left j
+set $right l
+
+###############     Autostart      ##################
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec ~/.azotebg
+exec blueman-applet
+
+exec env RUST_BACKTRACE=1 RUST_LOG=swayr=info ~/.cargo/bin/swayrd > /home/difrex/.local/log/swayrd.log 2>&1
+bindsym --to-code $Mod+Control+r exec ~/.cargo/bin/swayr switch-workspace-or-window
+
+### Turn off screen on lid closed
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
+#############         Bindings           ##################
+
+# Wofi
+bindsym --to-code $Mod+d exec wofi -d --show=run --height=40% --allow-images
+bindsym --to-code $Mod+Shift+d exec wofi --show=drun --height=40% --allow-images --insensitive
+
+# kill focused window
+bindsym --to-code $Mod+q kill
+bindsym --to-code Mod1+q kill
+bindsym --to-code Mod1+F4 kill
+
+# core applications
+bindsym --to-code $Mod+Return       exec $term
+bindsym --to-code Mod1+Shift+Return exec $term
+# bindsym --to-code Control+Shift+t   exec $term
+bindsym --to-code $Mod+t            exec $term
+bindsym --to-code $Mod+F2           exec $term
+bindsym --to-code $Mod+e            exec $editor
+bindsym --to-code $Mod+w            exec $browser
+bindsym --to-code $Mod+a            exec emacsclient -c
+bindsym --to-code $Mod+f            exec $filemanager
+bindsym --to-code $Mod+c            exec swaync-client -t
+bindsym --to-code $Mod+Shift+l      exec gtklock
+
+# Exit menu
+bindsym --to-code $Mod+x exec $exit
+
+# Exit sway (default way to log you out of your Wayland session)
+bindsym --to-code $Mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# screenshot
+bindsym --to-code Print exec grim /tmp/out-grim.png && ~/.local/bin/swappy -f /tmp/out-grim.png && rm -f /tmp/out-grim.png
+bindsym --to-code Control+Print exec screenshot display
+bindsym --to-code Shift+Control+Print exec grim -g "$(slurp)" /tmp/out-grim.png && ~/.local/bin/swappy -f /tmp/out-grim.png && rm -f /tmp/out-grim.png
+bindsym --to-code $Mod+Shift+Control+Print exec screenshot focused
+
+# audio
+bindsym --to-code XF86AudioPlay exec playerctl play-pause
+bindsym --to-code XF86AudioNext exec playerctl next
+bindsym --to-code XF86AudioPrev exec playerctl previous
+bindsym --to-code XF86AudioStop exec playerctl stop
+bindsym --to-code XF86AudioMute exec pamixer -t
+bindsym --to-code XF86AudioRaiseVolume exec pamixer -i 2
+bindsym --to-code XF86AudioLowerVolume exec pamixer -d 2
+
+# backlight
+bindsym --to-code XF86MonBrightnessUp exec light -A 5
+bindsym --to-code XF86MonBrightnessDown exec light -U 5
+
+# Reload the configuration file
+bindsym --to-code $Mod+Shift+c reload
+
+###########          Gesture Bindings            ###############
+
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
+bindgesture swipe:4:down kill
+bindgesture swipe:4:right focus left
+bindgesture swipe:4:left focus right
+
+############      Container/Window control  ############
+
+# Scratchpad, Floating
+bindsym --to-code $Mod+Mod1+f floating toggle
+floating_modifier Mod1 normal
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym --to-code $Mod+Shift+z move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym --to-code $Mod+z scratchpad show
+
+# change focus
+bindsym --to-code $Mod+$left  focus left
+bindsym --to-code $Mod+$down  focus down
+bindsym --to-code $Mod+$up    focus up
+bindsym --to-code $Mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym --to-code $Mod+Left   focus left
+bindsym --to-code $Mod+Down   focus down
+bindsym --to-code $Mod+Up     focus up
+bindsym --to-code $Mod+Right  focus right
+
+# move focus to the parent container
+bindsym --to-code $Mod+p      focus parent
+
+# move focused window
+# bindsym --to-code $Mod+Shift+$left  move left
+# bindsym --to-code $Mod+Shift+$down  move down
+# bindsym --to-code $Mod+Shift+$up    move up
+# bindsym --to-code $Mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym --to-code $Mod+Shift+Up    move up
+bindsym --to-code $Mod+Shift+Down  move down
+bindsym --to-code $Mod+Shift+Left  move left
+bindsym --to-code $Mod+Shift+Right move right
+
+# Resizing containers
+mode "resize" {
+    bindsym --to-code $left resize shrink width 10px
+    bindsym --to-code $down resize grow height 10px
+    bindsym --to-code $up resize shrink height 10px
+    bindsym --to-code $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym --to-code Left resize shrink width 10px
+    bindsym --to-code Down resize grow height 10px
+    bindsym --to-code Up resize shrink height 10px
+    bindsym --to-code Right resize grow width 10px
+
+    # Return to default mode
+    bindsym --to-code Return mode "default"
+    bindsym --to-code Escape mode "default"
+}
+bindsym --to-code $Mod+r mode "resize"
+
+# Size
+bindsym --to-code Mod1+Up    resize shrink height 10 px or 1 ppt
+bindsym --to-code Mod1+Down  resize grow   height 10 px or 1 ppt
+bindsym --to-code Mod1+Left  resize shrink width  10 px or 1 ppt
+bindsym --to-code Mod1+Right resize grow   width  10 px or 1 ppt
+
+# layout toggle
+bindsym --to-code Mod1+Tab layout toggle tabbed stacking split
+bindsym --to-code $Mod+Tab layout toggle splitv splith
+
+# switch to workspace with urgent window
+for_window [urgent="latest"] focus
+focus_on_window_activation   focus
+
+# container layout
+bindsym --to-code $Mod+h split h
+bindsym --to-code $Mod+v split v
+bindsym --to-code $Mod+Shift+t layout tabbed
+bindsym --to-code $Mod+Shift+s layout stacking
+bindsym --to-code $Mod+Shift+h layout toggle split
+
+default_orientation horizontal
+
+# make the current focus fullscreen
+bindsym --to-code $Mod+Shift+f fullscreen
+
+###############      Border & Gaps     ###############
+
+smart_gaps off
+smart_borders on
+gaps inner 5
+gaps outer 10
+# hide_edge_borders smart
+
+# changing border style
+bindsym --to-code $Mod+b border toggle
+
+# change gaps
+bindsym --to-code $Mod+plus                gaps inner current plus  5
+bindsym --to-code $Mod+minus               gaps inner current minus 5
+bindsym --to-code Mod1+plus                gaps outer current plus  5
+bindsym --to-code Mod1+minus               gaps outer current minus 5
+
+bindsym --to-code $Mod+KP_Add              gaps inner current plus  5
+bindsym --to-code $Mod+KP_Subtract         gaps inner current minus 5
+bindsym --to-code Mod1+KP_Add              gaps outer current plus  5
+bindsym --to-code Mod1+KP_Subtract         gaps outer current minus 5
+
+############    application settings   ############
+
+# focus, floating, & sticky
+for_window [app_id="(?i)(?:blueman-manager|azote|gnome-disks)"] floating enable
+for_window [app_id="(?i)(?:pavucontrol|nm-connection-editor|gsimplecal|galculator)"] floating enable
+for_window [app_id="(?i)(?:firefox|chromium)"] border none
+for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+
+popup_during_fullscreen smart

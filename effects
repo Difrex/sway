@@ -1,0 +1,15 @@
+blur on
+blur_xray off
+blur_passes 3
+blur_radius 5
+
+shadows on
+shadows_on_csd on
+shadow_blur_radius 25
+shadow_color #00000000
+
+default_dim_inactive 0.4
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
+
+corner_radius 10

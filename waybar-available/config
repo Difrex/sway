@@ -4,7 +4,7 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "custom/autolayout",
+        // "custom/autolayout",
         //"custom/bluetooth",
         "custom/right-arrow-dark"
     ],
@@ -26,7 +26,7 @@
         // "custom/mail",
         "battery",
         "custom/screencast",
-        "custom/pacman",
+        // "custom/pacman",
         "tray",
         "custom/layout"
     ],
@@ -149,7 +149,7 @@
                 ""
             ]
         },
-        "exec": "~/.local/bin/key_layout"
+        "exec": "~/.local/bin/key-layout"
         // "interval": 1
     },
     "custom/screencast": {

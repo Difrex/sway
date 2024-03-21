@@ -1,0 +1,14 @@
+exec nm-applet --indicator
+exec swayidle timeout 900 gtklock # timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+exec solaar
+
+exec_always ~/.config/sway/scripts/waybar.sh
+exec_always mako --font 'Go Mono 12' --background-color '#2b303b' --text-color '#c0c5ce' --border-color '#ECBE7B' --default-timeout 5000 --width 400 --markup 1 --border-radius 5 --actions 1 --history 1
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+}

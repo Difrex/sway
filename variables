@@ -1,0 +1,14 @@
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+
+# set $term gnome-terminal
+set $term alacritty
+set $browser flatpak run org.mozilla.firefox
+set $filemanager nautilus
+set $editor emacsclient -c
+set $launcher nwg-drawer
+set $exit nwg-bar -p center -a middle -i 48 -s preset-0.css
